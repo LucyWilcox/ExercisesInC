@@ -2,14 +2,7 @@
 
 ### C Exercises
 
-<<<<<<< HEAD
 [Here is a link to the ex01 directory in my repository](https://github.com/LucyWilcox/ExercisesInC/tree/master/exercises/ex01)
-=======
-Modify the link below so it points to the `ex01` directory in your
-student repository.
-
-[Here is a link to the ex01 directory in my repository](https://github.com/YOUR_GITHUB_USERNAME_HERE/ExercisesInC/tree/master/exercises/ex01)
->>>>>>> cf2e4c9fdbd2ffad984a965c1d06a67959969c91
 
 ### Think OS Chapter 1 reading questions
 
@@ -35,14 +28,11 @@ If you have optimizations on you might miss bugs that only occure when code opti
 
 5) When you run `gcc` with `-S`, why might the results look different on different computers?
 
-<<<<<<< HEAD
 This assembly code differs depending on the computer and the resulting file is made with whichever version of assembly code is on the computer the command is performed on.
 
 6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages 
 you get might look very different.  Why?
-=======
-6) If you spell a variable name wrong, or if you spell a function name wrong, the error messages you get might look very different.  Why?
->>>>>>> cf2e4c9fdbd2ffad984a965c1d06a67959969c91
+
 
 They might get caught at different times like parsing vs linking.
 
