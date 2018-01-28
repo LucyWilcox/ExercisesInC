@@ -49,7 +49,7 @@ Constants
 ~~~~~~~~~
 Code
  
-main -> 04005d6 (not 100% sure about this one)
+main -> 0x4005d6
 
 ~~~~~~~~~
 */
