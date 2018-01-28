@@ -7,7 +7,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-int calcSum(int nums[10], int pos){
+
+int pos = 0;
+
+/* Adds all integers in array and returns total
+
+	nums[10]: array of ints to be added
+
+*/
+int calcSum(int nums[10]){
 	int total_sum = 0;
 	for (int i = 0; i < pos; i++) {
 		total_sum += nums[i];
@@ -15,11 +23,15 @@ int calcSum(int nums[10], int pos){
 	return total_sum;
 }
 
-int main(){
+/* Reads user input for numbers to add, converts them to ints and updates array
+which is defined in main
+
+	nums[]: array of ints to be added 
+
+*/
+void getNumsToSum(int nums[]){
 	puts("Enter integers to add:");
-	int nums[11];
 	char num[11];
-	int pos = 0;
 	while (scanf("%10s", num) != EOF){
 		if (strlen(num) > 9) {
 			puts("Number too big (over 9 digits), will not be added.");
@@ -33,7 +45,15 @@ int main(){
 			pos ++;
 		}	
 	}
-	int total_sum = calcSum(nums, pos);
+}
+
+/* Program calculates and prints sum of up to 10 numbers
+
+*/
+int main(){
+	int nums[11]; 
+	getNumsToSum(nums);
+	int total_sum = calcSum(nums);
 	printf("Sum: %d\n", total_sum);
 	
 	return 0;
