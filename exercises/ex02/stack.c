@@ -10,7 +10,7 @@ License: GNU GPLv3
 1. The program is trying to set each element of the array to 42, then make another array
 where each element is it's index, and finally print of the array generated in foo where all element are 42.
 
-2. There is a compilation error saynig that foo return the address of local variable. I think that this means
+2. There is a compilation error saying that foo return the address of local variable. I think that this means
 that pointer array will not be pointing to the array generated in this function.
 
 3. I get a segmentation fault. I think it's because in when the program is trying to access the array
