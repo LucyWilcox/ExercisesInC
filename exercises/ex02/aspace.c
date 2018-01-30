@@ -34,7 +34,7 @@ int main ()
 ~~~~~~~~~
 Stack 
 
-local -> 0x7ffd4a72d3fc
+var2 -> 0x7ffd4a72d3fc
 
 ~~~~~~~~~
 Heap
