@@ -44,11 +44,12 @@ p -> 0xbae010
 ~~~~~~~~~
 Globals 
 
-global -> 0x60104c
+var1 -> 0x60104c
 
 ~~~~~~~~~
 Constants
 
+s -> 0x400714
 
 ~~~~~~~~~
 Code
