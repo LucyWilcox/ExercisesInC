@@ -1,6 +1,6 @@
 /* Example code for Think OS.
 
-Copyright 2014 Allen Downey
+Copyright 2014 Allen Dwney
 License: GNU GPLv3
 
 Address spaces sketched by Lucy Wilcox.
