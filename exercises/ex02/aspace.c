@@ -11,7 +11,7 @@ Address spaces sketched by Lucy Wilcox.
 
 5. The stack appears to grow down
 
-6. There is 20 bytes between each of the addresses
+6. There is 20 hex between each of the addresses so more than enough bytes
 
 */
 
