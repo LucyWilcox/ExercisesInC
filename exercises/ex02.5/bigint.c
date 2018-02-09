@@ -23,6 +23,7 @@ Follow these steps to get this program working:
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <ctype.h>
 
 /* reverse_string: Returns a new string with the characters reversed.
 
@@ -30,22 +31,22 @@ It is the caller's responsibility to free the result.
 
 s: string
 returns: string
+Inspired by: https://stackoverflow.com/questions/784417/reversing-a-string-in-c
+and Head first C reverse printing 
 */
+
 char *reverse_string(char *s) {
-    puts(s);
-    size_t len = strlen(s);
-    char rev[len];
-    char *t = s + len - 1;
-    int c = 0;
+    size_t str_len = strlen(s);
 
-    while(t >= s) {
-        rev[c] = *t;
-        t = t -1;
-        c ++;
+    char *t = strdup(s);    // Duplicate the string s to t
+    char *start = t;        // Get start and end pointers
+    char *end = s + str_len - 1;
+    for (int i = 0; i<str_len; i++) {
+        *start = *end;
+        start++;
+        end--;
     }
-
-    char* rev_p = rev;
-    return rev_p;
+    return t;
 }
 
 /* ctoi: Converts a character to integer.
@@ -64,8 +65,8 @@ i: integer 0 to 9
 returns: character '0' to '9'
 */
 char itoc(int i) {
-    //TODO: Fill this in, with an appropriate assertion.
-    return '0';
+    assert(0 <= i <= 9);
+    return i + '0';
 }
 
 /* add_digits: Adds two decimal digits, returns the total and carry.
@@ -81,7 +82,11 @@ carry: pointer to char
 
 */
 void add_digits(char a, char b, char c, char *total, char *carry) {
-    //TODO: Fill this in.
+    int tot = ctoi(a) + ctoi(b) + ctoi(c);
+    int s = tot/10;
+    int f = tot%10;
+    *total = itoc(f);
+    *carry = itoc(s);
 }
 
 /* Define a type to represent a BigInt.
@@ -216,6 +221,6 @@ int main (int argc, char *argv[])
 
     //TODO: When you have the first three functions working,
     //      uncomment the following, and it should work.
-    // test_add_bigint();
+    test_add_bigint();
     return 0;
 }
