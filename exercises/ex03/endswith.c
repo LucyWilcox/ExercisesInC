@@ -28,6 +28,13 @@ returns: 1 if true, 0 otherwise
 int endswith(char *s, char *suffix)
 {
     // TODO: Fill this in!
+    size_t len_s = strlen(s);
+    size_t len_suffix = strlen(suffix);
+
+    if (strcmp(s + len_s - len_suffix, suffix) == 0){
+        return 1;
+    }
+   
     return 0;
 }
 
@@ -47,7 +54,7 @@ int main (int argc, char *argv[])
     test_endswith("endswith", "offendswith", 0);
 
     // what's the right answer?
-    // test_endswith("endswith", "", ?);
+    test_endswith("endswith", "", 1);
 
     printf("All tests passed\n");
 }
