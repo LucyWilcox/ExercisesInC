@@ -6,6 +6,7 @@ Modify the link below so it points to the `ex03` directory in your
 student repository.
 
 [Here is a link to the ex03 directory in my repository](https://github.com/LucyWilcox/ExercisesInC/tree/master/exercises/ex03)
+
 ### Think OS Chapter 4 reading questions
 
 **Files and file systems**
@@ -13,33 +14,38 @@ student repository.
 1) What abstractions do file systems provide?  Give an example of something that is logically 
 true about files systems but not true of their implementations.
 
-File system provide the abstraction of a stream, but really they are block based.
+The file system makes it seem like files are streams of input, but really they are block-based.
 
-2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
-Ignoring the details of the encoding scheme, how many different characters can be represented?
+2) What information do you imagine is stored in an `OpenFileTableEntry`?
 
-2^32
+I imagine that it stores the file location, file position, write/read/append settings. 
 
-3) What is the difference between "memory" and "storage" as defined in *Think OS*?
+3) What are some of the ways operating systems deal with the relatively slow performance of persistent storage?
 
-Memory is volatile and will be lost in the computer is shut down or the process ends, storage is not and is stored more permantly on an HDD of SSD.
+The OS will load whole 8KiB blocks at a time, because it take realitivly little addition time to loading a single byte. It will also prefetch blocks that thinks will be read soon. Similarly, the OS will make lots of changes to a block while it is in memory and will only write it to disk once when done. Lastly the OS will store recently/frequently used blocks in memory.
 
-4) What is the difference between a GiB and a GB?  What is the percentage difference in their sizes?
+4) Suppose your program writes a file and prints a message indicating that it is done writing.  
+Then a power cut crashes your computer.  After you restore power and reboot the computer, you find that the 
+file you wrote is not there.  What happened?
 
-A GB is 10^9 bytes (base 10) and a GiB is 2^30 bytes (base 2, used for memory units). A GiB is about 7.37% larger than an GB.
+The file was likely written to in memory, but not was never written to in persistent storage on the drive.
 
-5) How does the virtual memory system help isolate processes from each other?
+5) Can you think of one advantage of a File Allocation Table over a UNIX inode?  Or an advantage of a inode over a FAT?
 
-Virtual memory allows processes to not deal with physical addresses, even if two programs use the same virtual address the operating system will use different physical addresses. Processes cannot generate virtual address which map to physical addresses being used by other processes. 
+FAT can store files that are so large a triple indirection block is too small. Because FAT is like a linked list, it's likely harder to change and move files.
 
-6) Why do you think the stack and the heap are usually located at opposite ends of the address space?
+6) What is overhead?  What is fragmentation?
 
-The stack and heap grow in opposite dirrections so when they are at different ends of the address space they will grow towards each other. This maximizes space because you won't have a situation where the stack or heap is out of memory when the other still has space.
+Overhead is the data structures which are used for allocation of the data. Fragmentation is where blocks are unused or only partially used.
 
-7) What Python data structure would you use to represent a sparse array?
+7) Why is the "everything is a file" principle a good idea?  Why might it be a bad idea?
 
-A dictionary where tuples of virtual locations map to a single physical location.
+It allows file handling functions to read and write data from anything which 'is a file', this allows for people to used a single interface between files. Though this consistency is good, it might be hard to fit every single application to this abstraction and it could make it harder for some applications to be built or fuction.
 
-8) What is a context switch?
+If you would like to learn more about file systems, a good next step is to learn about journaling file systems.  
+Start with [this Wikipedia article](https://en.wikipedia.org/wiki/Journaling_file_system), then 
+[Anatomy of Linux Journaling File Systems](http://www.ibm.com/developerworks/library/l-journaling-filesystems/index.html).  
+Also consider reading [this USENIX paper](https://www.usenix.org/legacy/event/usenix05/tech/general/full_papers/prabhakaran/prabhakaran.pdf).
 
-A context switch involves the OS interrupting a running process, saving its state, and then running a different process.
+
+
