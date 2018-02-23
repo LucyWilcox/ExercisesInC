@@ -13,7 +13,7 @@ student repository.
 1) What abstractions do file systems provide?  Give an example of something that is logically 
 true about files systems but not true of their implementations.
 
-6 bits bits because 2^5 is 32 which is not enough and 2^6 is 64 which is enough.
+File system provide the abstraction of a stream, but really they are block based.
 
 2) In the UTF-16 character encoding, the binary representation of a character can take up to 32 bits.  
 Ignoring the details of the encoding scheme, how many different characters can be represented?
