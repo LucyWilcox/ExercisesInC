@@ -19,7 +19,7 @@ It will be interprited using two's complement and I believe it will end up copyi
 2) Write a C expression that computes the two's complement of 12 using the XOR bitwise operator. 
 Try it out and confirm that the result is interpreted as -12.
 
-TODO
+[here](https://github.com/LucyWilcox/ExercisesInC/blob/master/exercises/ex05/twosc.c)
 
 3) Can you guess why IEEE floating-point uses biased integers to represent the exponent rather than a
 sign bit or two's complement?
@@ -42,5 +42,6 @@ so 11000001010100000000000000000000 which if evaluated as an int would be a lot 
 As a challenge, you can make a faster version by reading the string 32 or 64 bits at a time, rather than one
 character at a time.  This optimization is made easier if the length of the string is a multiple of 4 or 8 bytes.
 
-TODO
+[here](https://github.com/LucyWilcox/ExercisesInC/blob/master/exercises/ex05/caseflip.c)
+
 
