@@ -18,6 +18,7 @@
 #include <sys/un.h>
 #include <stdarg.h>
 #include <syslog.h>
+#include <unistd.h>
 #include "util.h"
 
 #define BUFSIZE 1500
@@ -44,3 +45,18 @@ extern Sockaddr *sarecv;
 extern Sockaddr *salast;
 extern Sockaddr *sabind;
 extern socklen_t salen;
+
+void sig_alrm (int signo);
+int process_ip (struct ip *ip, int len);
+int recv_dgram ();
+void sub_tv (Timeval *plus, Timeval *minus, Timeval *res);
+double time_to_double (Timeval *time);
+void print_report ();
+void send_dgram (int ttl);
+int send_probes (int ttl);
+void loop_ttl ();
+
+
+
+
+
