@@ -75,7 +75,7 @@ float my_random_float2()
     return b.f;
 }
 
-double my_random_double()
+double my_random_double2()
 {
     int x, exp, mant;
     float f;
@@ -106,11 +106,11 @@ double my_random_double()
 }
 
 // compute a random double using my algorithm
-double my_random_double2()
+double my_random_double()
 {
     int x;
     int mant;
-    long exp = 1022;
+    int exp = 1022;
     int mask = 1;
 
     union {

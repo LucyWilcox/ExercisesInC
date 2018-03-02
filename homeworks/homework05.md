@@ -28,7 +28,8 @@ It allows comparisons to be preformed lexicographically.
 
 (couldn't really guess this one, looked it up: https://stackoverflow.com/questions/19864749/why-do-we-bias-the-exponent-of-a-floating-point-number)
 
-4) Following the example in Section 5.4, write the 32-bit binary representation of -13 in single precision 
+4) Following the example in Section 5.3, write the 32-bit binary representation of -13 in single precision 
+
 IEEE floating-point.  What would you get if you accidentally interpreted this value as an integer?
 
 sign: 1
