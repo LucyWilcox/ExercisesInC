@@ -54,6 +54,7 @@ void print_list(Node **list) {
 * returns: int or -1 if the list is empty
 */
 int pop(Node **list) {
+    
     // FILL THIS IN!
     return 0;
 }
@@ -104,18 +105,18 @@ int main() {
     Node **list = &head;
     print_list(list);
 
-    int retval = pop(list);
-    print_list(list);
+    // int retval = pop(list);
+    // print_list(list);
 
-    push(list, retval+10);
-    print_list(list);
+    // push(list, retval+10);
+    // print_list(list);
 
-    remove_by_value(list, 3);
-    print_list(list);
+    // remove_by_value(list, 3);
+    // print_list(list);
 
-    remove_by_value(list, 7);
-    print_list(list);
+    // remove_by_value(list, 7);
+    // print_list(list);
 
-    reverse(list);
-    print_list(list);
+    // reverse(list);
+    // print_list(list);
 }
