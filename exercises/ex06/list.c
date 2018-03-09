@@ -59,8 +59,8 @@ int pop(Node **list) {
         return -1;
     }
     int head_val = current->val;
-    **list = *(current->next);
-
+    // **list = *(current->next); 
+    *list = current->next;
     return head_val;
 }
 
