@@ -33,7 +33,7 @@ A hash table probably wouldn't be read sequentially like an array so it could de
 
 5)  If you refactor a program to improve locality, would you say the program is "cache aware"?  Why not?
 
-Yeah, I think it has to be cache aware by definition.
+You have to know the actual size of the cache for it to be cache aware.
 
 6) See if you can estimate the cost of a memory cache by comparing the prices of two similar CPUs with 
 different cache sizes.
