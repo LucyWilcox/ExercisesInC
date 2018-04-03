@@ -21,6 +21,8 @@ The program counter, status register, and any data registers it might use.
 
 3) What is the difference between an interrupt and a context switch?
 
+An interrupt returns to the interrupted process when done, a context switch changes the process.
+
 4) Give an example of an event that might cause a process to move from the blocked to the ready state.
 
 An interrupt returns to the interrupted process when done, a context switch changes the process.
