@@ -45,6 +45,8 @@ void print_matrix_row(double *row, int num_cols) {
     }
 }
 
+
+
 /* Print a matrix.
 */
 void print_matrix(Matrix *matrix) {
@@ -54,10 +56,26 @@ void print_matrix(Matrix *matrix) {
     }
 }
 
+int cmp_matrix_row(const void *row1, const void *row2){
+    int num_cols = 4;
+    double* row_1 = (double*)row1;
+    double* row_2 = (double*)row2;
+    for (int j=0; j<num_cols; j++) {
+        if(row_1[j] > row_2[j]){
+            return 1;
+        } else if(row_1[j] < row_2[j]){
+            return -1;
+        }
+    }
+    return 0;
+}
+
 /* Sort rows in descending order by first element.
 */
 void sort_matrix_rows(Matrix *matrix) {
     // TODO: Write this function
+    qsort(matrix->rows, matrix->num_rows, sizeof(double*), cmp_matrix_row);
+    // return matrix;
 }
 
 /* Perform row reduction.
@@ -93,5 +111,7 @@ int main () {
     reduce_matrix_rows(matrix, 2, 0);
     print_matrix(matrix);
 
+    sort_matrix_rows(matrix);
+    print_matrix(matrix);
     //free_matrix(matrix);
 }

@@ -69,6 +69,36 @@ void reduce_matrix_rows(Matrix *matrix, int i, int j) {
     }
 }
 
+int cmp_matrix_row(const void *row1, const void *row2){
+    double* row_1 = (double*)row1;
+    double* row_2 = (double*)row2;
+    int num_cols = sizeof(*row_1);
+
+    for (int j=0; j<num_cols; j++) {
+        puts("here");
+        if(row_1[j] > row_2[j]){
+            puts("la");
+            return 1;
+        } else if(row_1[j] < row_2[j]){
+            puts("sm");
+            return -1;
+        }
+    }
+    puts("same");
+    return 0;
+}
+
+/* Sort rows in descending order by first element.
+*/
+void sort_matrix_rows(Matrix *matrix) {
+    // TODO: Write this function
+    qsort(matrix->rows, matrix->num_rows, sizeof(double*), cmp_matrix_row);
+    puts("hh");
+    // printf("%s\n", );
+    // print_matrix(matrix);
+    // return matrix;
+}
+
 int main () {
     Matrix *matrix = make_matrix(3, 4);
     for (int i=0; i<matrix->num_rows; i++) {
@@ -81,6 +111,10 @@ int main () {
     printf("reducing...\n");
     reduce_matrix_rows(matrix, 1, 0);
     reduce_matrix_rows(matrix, 2, 0);
+    print_matrix(matrix);
+
+    puts("sort");
+    sort_matrix_rows(matrix);
     print_matrix(matrix);
 
     free_matrix(matrix);
