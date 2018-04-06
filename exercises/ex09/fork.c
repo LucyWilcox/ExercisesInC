@@ -19,6 +19,7 @@ License: MIT License https://opensource.org/licenses/MIT
 // error information
 extern int errno;
 
+int global_var = 0; // global var is 0
 
 // get_seconds returns the number of seconds since the
 // beginning of the day, with microsecond precision
@@ -30,9 +31,17 @@ double get_seconds() {
 }
 
 
-void child_code(int i)
+void child_code(int i, int* global_var, int* heap_var, int* stack_var)
 {
     sleep(i);
+    // increment each of these in the child
+    *global_var = *global_var + 1;
+    *heap_var = *heap_var + 1;
+    *stack_var = *stack_var + 1;
+    // check that they are all now 1
+    printf("stackvar %d\n", *stack_var);
+    printf("heapvar %d\n", *heap_var);
+    printf("globalvar %d\n", *global_var);
     printf("Hello from child %d.\n", i);
 }
 
@@ -45,6 +54,9 @@ int main(int argc, char *argv[])
     pid_t pid;
     double start, stop;
     int i, num_children;
+    int stack_var = 0; // stack var is 0
+    int* heap_var = malloc(sizeof(int));
+    *heap_var = 0; // heap var is 0
 
     // the first command-line argument is the name of the executable.
     // if there is a second, it is the number of children to create.
@@ -72,7 +84,8 @@ int main(int argc, char *argv[])
 
         /* see if we're the parent or the child */
         if (pid == 0) {
-            child_code(i);
+            // at this point each of these has been set to 0
+            child_code(i, &global_var, heap_var, &stack_var);
             exit(i);
         }
     }
@@ -91,6 +104,10 @@ int main(int argc, char *argv[])
 
         // check the exit status of the child
         status = WEXITSTATUS(status);
+        // but wait, now all the vars are 0 again -> cause they aren't shared in the child process
+        printf("stackvarparent %d\n", stack_var);
+        printf("globalvarparent %d\n", global_var);
+        printf("heapvarparent %d\n", *heap_var);
         printf("Child %d exited with error code %d.\n", pid, status);
     }
     // compute the elapsed time
