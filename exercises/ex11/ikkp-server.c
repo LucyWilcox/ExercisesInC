@@ -134,30 +134,44 @@ void bind_to_port(int socket, int port)
 
         while (1) {
             connect_d = open_client_socket();
-
-            if (say(connect_d, intro_msg) == -1) {
-                close(connect_d);
-                continue;
+            if (connect_d == -1){
+                error("can't open second socket");
             }
 
-            read_in(connect_d, buf, sizeof(buf));
-            // check to make sure they said "Who's there?"
+            if(!fork()){
+                close(listener_d);
+                if (say(connect_d, intro_msg) == -1) {
+                    close(connect_d);
+                    continue;
+                }
 
-            if (say(connect_d, "Surrealist giraffe.\n") == -1) {
-                close(connect_d);
-                continue;
+                read_in(connect_d, buf, sizeof(buf));
+                if (strncasecmp("Who's there?", buf, 12)){
+                    say(connect_d, "you should say 'Who's there?'");
+                } else {
+
+                    if (say(connect_d, "Surrealist giraffe.\n") == -1) {
+                        close(connect_d);
+                        continue;
+                    }
+
+                    read_in(connect_d, buf, sizeof(buf));
+                    if (strncasecmp("Surrealist giraffe who?", buf, 23)){
+                        say(connect_d, "you should say 'Surrealist giraffe who?'");
+                    } else {
+
+
+                        if (say(connect_d, "Bathtub full of brightly-colored machine tools.\n") == -1) {
+                            close(connect_d);
+                            continue;
+                        }
+                    }
+                }
+
             }
-
-            read_in(connect_d, buf, sizeof(buf));
-            // check to make sure they said "Surrealist giraffe who?"
-
-
-            if (say(connect_d, "Bathtub full of brightly-colored machine tools.\n") == -1) {
-                close(connect_d);
-                continue;
-            }
-
             close(connect_d);
+
+            
         }
         return 0;
     }
