@@ -38,21 +38,24 @@ int main(int argc, char *argv[])
     int num_feeds = 5;
     char *search_phrase = argv[1];
     char var[255];
+    pid_t child_pid, wpid;
+    int status = 0;
 
     for (int i=0; i<num_feeds; i++) {
         sprintf(var, "RSS_FEED=%s", feeds[i]);
         char *vars[] = {var, NULL};
 
-        pid_t pid = fork();
-        if (pid == -1) {
+        child_pid = fork();
+        if (child_pid == -1) {
             error("can't fork process");
         }
-        if (pid == 0){
+        if (child_pid == 0){
             int res = execle(PYTHON, PYTHON, SCRIPT, search_phrase, NULL, vars);
             if (res == -1) {
                 error("Can't run script.");
             }
         }
     }
+    while((wpid = wait(&status)) > 0);
     return 0;
 }
