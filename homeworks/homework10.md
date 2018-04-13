@@ -41,6 +41,6 @@ Nope.
 
 8) Does the condition have to be true when you signal a condition variable?
 
-It should be, but it might not be which is why the condition needs to be checked again.
+It will be when it's true, but it might not be true right after it's signaled.
 
 
