@@ -37,10 +37,10 @@ Nothing.
 
 7) Do you have to lock the mutex to signal a condition variable?
 
-
+Nope.
 
 8) Does the condition have to be true when you signal a condition variable?
 
-
+It should be, but it might not be which is why the condition needs to be checked again.
 
 
