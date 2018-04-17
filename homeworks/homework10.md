@@ -29,7 +29,7 @@ Because the mutex must be locked before you call cond_wait and it's the mutex th
 
 5) When a thread returns from `cond_wait`, what do we know is definitely true?  What do we think is probably true?
 
-The condition being waited on is now true and the mutex is locked. But it might be the case that there is an interception so you still have to check again.
+The condition being waited on is likely now true and the mutex is locked is definitely true.
 
 6) What happens if you signal a condition variable when there are no waiting threads?
 
