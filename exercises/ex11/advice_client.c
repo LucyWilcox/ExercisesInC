@@ -86,12 +86,12 @@ int main(int argc, char *argv[])
     /* display page on stdout in 255 byte chunks */
     bytes_received = recv(d_sock, rec, 255, 0);
     while (bytes_received) {
-	if (bytes_received == EOF)
-	    error("can't read from server");
+    	if (bytes_received == EOF)
+    	    error("can't read from server");
 
-	rec[bytes_received] = '\0';
-	printf("%s", rec);
-	bytes_received = recv(d_sock, rec, 255, 0);
+    	rec[bytes_received] = '\0';
+    	printf("%s", rec);
+    	bytes_received = recv(d_sock, rec, 255, 0);
     }
     close(d_sock);
 
