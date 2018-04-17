@@ -41,6 +41,6 @@ Nope.
 
 8) Does the condition have to be true when you signal a condition variable?
 
-Yes, but it might not be true right after it's signaled.
+You can decided to signal whenever you want, even if it's true, it might not be true right after it's signaled.
 
 
