@@ -81,11 +81,12 @@ void child_code(Shared *shared)
     mutex_lock(shared->mutex);
     shared->array[shared->counter]++;
     shared->counter++;
-    mutex_unlock(shared->mutex);
+    // mutex_unlock(shared->mutex);
 
     if (shared->counter % 10000 == 0) {
       printf("%d\n", shared->counter);
     }
+    mutex_unlock(shared->mutex);
   }
 }
 

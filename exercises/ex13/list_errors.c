@@ -176,10 +176,17 @@ Node *make_something() {
     int val = pop(&node1);
     push(&node2, val);
     node3->next = node2;
-
     return node3;
 }
 
+void free_list(Node *node){
+    while(node != NULL) {
+        Node *next_node = node->next;
+        free(node);
+        node = next_node;
+    }
+    return;
+}
 
 int main() {
     // make a list of even numbers
@@ -209,7 +216,9 @@ int main() {
     print_list(&empty);
 
     Node *something = make_something();
-    free(something);
-
+    // free(something);
+    free_list(something);
+    free_list(test_list);
+    free_list(empty);
     return 0;
 }
