@@ -24,6 +24,7 @@ Possibly 0 if you want it to count the number of something and there are 0 to be
 4) In my solution to the producers-consumers problem using Semaphores,
 what does it mean if the value of `queue->spaces` is `3` at some point in time?
 
+
 If `queue->spaces` is `3` it means that there are 3 empty spaces left in the queue. 
 
 5) What does it mean if `queue->space` is `-3`?
