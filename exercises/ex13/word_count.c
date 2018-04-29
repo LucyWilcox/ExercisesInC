@@ -36,6 +36,10 @@ void pair_printor(gpointer value, gpointer user_data)
     printf("%d\t %s\n", pair->freq, pair->word);
 }
 
+void free_pair(gpointer pairp){
+    Pair* pair = (Pair*)pairp;
+    g_free(pair);
+}
 
 /* Iterator that prints keys and values. */
 void kv_printor (gpointer key, gpointer value, gpointer user_data)
@@ -56,6 +60,8 @@ void accumulator(gpointer key, gpointer value, gpointer user_data)
         (gpointer) pair,
         (GCompareDataFunc) compare_pair,
         NULL);
+
+    g_free(value);
 }
 
 /* Increments the frequency associated with key. */
@@ -86,6 +92,7 @@ int main(int argc, char** argv)
     FILE *fp = g_fopen(filename, "r");
     if (fp == NULL) {
         perror(filename);
+        g_free(filename);
         exit(-10);
     }
 
@@ -104,6 +111,7 @@ int main(int argc, char** argv)
         for (int i=0; array[i] != NULL; i++) {
             incr(hash, array[i]);
         }
+        g_strfreev(array);
     }
     fclose(fp);
 
@@ -111,7 +119,7 @@ int main(int argc, char** argv)
     // g_hash_table_foreach(hash, (GHFunc) kv_printor, "Word %s freq %d\n");
 
     // iterate the hash table and build the sequence
-    GSequence *seq = g_sequence_new(NULL);
+    GSequence *seq = g_sequence_new(free_pair);
     g_hash_table_foreach(hash, (GHFunc) accumulator, (gpointer) seq);
 
     // iterate the sequence and print the pairs
