@@ -92,7 +92,6 @@ int main(int argc, char** argv)
     FILE *fp = g_fopen(filename, "r");
     if (fp == NULL) {
         perror(filename);
-        g_free(filename);
         exit(-10);
     }
 
